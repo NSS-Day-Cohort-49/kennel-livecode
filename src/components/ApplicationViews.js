@@ -3,6 +3,9 @@ import { Route } from "react-router-dom";
 import { Home } from "./Home";
 import { AnimalList } from "./animal/AnimalList";
 import { AnimalProvider } from "./animal/AnimalProvider";
+import { CustomerProvider } from "./customer/CustomerProvider";
+import { LocationProvider } from "./location/LocationProvider";
+import { AnimalForm } from "./animal/AnimalForm";
 
 export const ApplicationViews = () => {
   return (
@@ -17,6 +20,14 @@ export const ApplicationViews = () => {
         <Route exact path="/animals">
           <AnimalList />
         </Route>
+
+        <CustomerProvider>
+          <LocationProvider>
+            <Route exact path="/animals/create">
+              <AnimalForm />
+            </Route>
+          </LocationProvider>
+        </CustomerProvider>
       </AnimalProvider>
 
       {/* <Route path="/login">
