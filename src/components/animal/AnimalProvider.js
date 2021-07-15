@@ -38,6 +38,17 @@ export const AnimalProvider = (props) => {
     .then(getAnimals)
   }
 
+  const updateAnimal = (animalObj) => {
+    return fetch(`http://localhost:8088/animals/${animalObj.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(animalObj)
+    })
+    .then(getAnimals)
+  }
+
 
   /*
         You return a context provider which has the
@@ -52,6 +63,7 @@ export const AnimalProvider = (props) => {
         getAnimals,
         getAnimalById,
         addAnimal,
+        updateAnimal,
         releaseAnimal
       }}
     >
